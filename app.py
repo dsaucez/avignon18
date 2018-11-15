@@ -1,3 +1,10 @@
+#BENCHRIFA Mohamed Amine
+#CADI Hamza
+#DESTREE Gabriel
+#NDIAYE El Hadj Pathé 
+#PORQUEZ William
+
+
 # Import des différentes librairies flask
 from flask import Flask, jsonify, render_template, redirect
 from flask import make_response
@@ -12,9 +19,9 @@ import random
 app = Flask(__name__)
 
 # On va générer une clé publique qui est donné par le hash md5 d'un nombre aléatoire.
-# 
+#
 def generate_hash():
-	
+
 	h = random.randint(1,101)
 	h = hashlib.md5(str(h).encode())
 	h = h.hexdigest()
@@ -27,15 +34,15 @@ nodes = [
 	'id': 1,
 	'designation': 'node_1',
 	'ip': '92.168.0.1',
-	'port': '5435',  
-	'public_key': ''  
+	'port': '5435',
+	'public_key': ''
 	},
 	{
 	'id': 2,
 	'designation': 'node_2',
 	'ip': '92.168.0.1',
 	'port': '5435',
-	'public_key': ''   
+	'public_key': ''
 
 	},
 	{
@@ -43,42 +50,42 @@ nodes = [
 	'designation': 'node_3',
 	'ip': '92.168.0.1',
 	'port': '5435',
-	'public_key': ''    
+	'public_key': ''
 	},
 	{
 	'id': 4,
 	'designation': 'node_4',
 	'ip': '92.168.0.1',
 	'port': '5435' ,
-	'public_key': ''     
+	'public_key': ''
 	},
 	{
 	'id': 5,
 	'designation': 'node_5',
 	'ip': '92.168.0.1',
 	'port': '5435',
-	'public_key': ''      
+	'public_key': ''
 	},
 	{
 	'id': 6,
 	'designation': 'node_6',
 	'ip': '92.168.0.1',
 	'port': '5435',
-	'public_key': ''   
+	'public_key': ''
 	},
 	{
 	'id': 7,
 	'designation': 'node_7',
 	'ip': '92.168.0.1',
 	'port': '5435',
-	'public_key': ''    
+	'public_key': ''
 	},
 	{
 	'id': 8,
 	'designation': 'node_8',
 	'ip': '34.168.0.1',
-	'port': '5435',   
-	'public_key': ''  
+	'port': '5435',
+	'public_key': ''
 	}
 	]
 
@@ -121,7 +128,7 @@ def create_node():
         'designation': request.json['designation'],
         'ip': request.json['ip'],
         'port': request.json['port'],
-      
+
         }
     nodes.append(node)
     return jsonify({'node': node}), 201
@@ -142,8 +149,8 @@ def update_node(node_id):
 
     node[0]['designation'] = request.json.get('designation', node[0]['designation'])
     node[0]['ip'] = request.json.get('ip', node[0]['ip'])
-   
-   
+
+
     return jsonify({'node': node[0]})
 
 
